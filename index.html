@@ -16,56 +16,62 @@
                         .font-lato {
                                     font-family: "Lato", sans-serif;
                         }
+                        .bg_primary {
+                                    background: #0E7A81;
+                        }
             </style>
             <title>Peddy | Pet Adoption</title>
 </head>
 
 <body class="font-lato">
             <header>
-                        <nav>
-                                    <div class="navbar bg-base-100 shadow-sm">
-                                                <div class="navbar-start gap-2">
-                                                            <a class="flex flex-row gap-1 justify-center items-center text-3xl font-bold"> 
-                                                                        <img src="assets/logo.webp" alt="logo" class="w-7 h-7">
-                                                                        Peddy
-                                                            </a>
-                                                </div>
-                                                <div class="navbar-center hidden lg:flex">
-                                                            <ul class="menu menu-horizontal px-1 font-bold text-[16px]">
+                        <nav class="navbar bg-base-100 shadow-sm">
+                                    <div class="navbar-start gap-2">
+                                                <a class="flex flex-row gap-1 justify-center items-center text-3xl font-bold">
+                                                            <img src="assets/logo.webp" alt="logo" class="w-5 h-5">
+                                                            Peddy
+                                                </a>
+                                    </div>
+                                    <div class="navbar-center hidden lg:flex">
+                                                <ul class="menu menu-horizontal px-1 font-bold text-[16px]">
+                                                            <li><a>Home</a></li>
+                                                            <li><a>Shop</a></li>
+                                                            <li><a>Contact</a></li>
+                                                </ul>
+                                    </div>
+                                    <div class="navbar-end gap-2">
+                                                <span
+                                                            class="btn text-xl font-normal bg-base-100 border border-gray-300 px-2 rounded-full">
+                                                            <i class="ri-user-3-line"></i>
+                                                </span>
+                                                <div class="dropdown dropdown-end">
+                                                            <div tabindex="0" role="button"
+                                                                        class="btn lg:hidden text-xl font-normal bg-base-100 border border-gray-300 px-2 rounded-full">
+                                                                        <i class="ri-menu-5-line"></i>
+                                                            </div>
+                                                            <ul tabindex="0"
+                                                                        class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow font-bold text-[16px]">
                                                                         <li><a>Home</a></li>
                                                                         <li><a>Shop</a></li>
                                                                         <li><a>Contact</a></li>
                                                             </ul>
                                                 </div>
-                                                <div class="navbar-end gap-2">
-                                                            <span class="btn text-xl font-normal bg-base-100 border border-gray-300 px-2 rounded-full">
-                                                                        <i class="ri-user-3-line"></i>
-                                                            </span>
-                                                            <div class="dropdown dropdown-end">
-                                                                        <div tabindex="0" role="button"
-                                                                                    class="btn lg:hidden font-normal bg-base-100 border border-gray-300 px-[9px] rounded-full">
-                                                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                                                                class="h-5 w-5"
-                                                                                                fill="none"
-                                                                                                viewBox="0 0 24 24"
-                                                                                                stroke="currentColor">
-                                                                                                <path stroke-linecap="round"
-                                                                                                            stroke-linejoin="round"
-                                                                                                            stroke-width="2"
-                                                                                                            d="M4 6h16M4 12h8m-8 6h16" />
-                                                                                    </svg>
-                                                                        </div>
-                                                                        <ul tabindex="0"
-                                                                                    class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow font-bold text-[16px]">
-                                                                                    <li><a>Home</a></li>
-                                                                                    <li><a>Shop</a></li>
-                                                                                    <li><a>Contact</a></li>
-                                                                        </ul>
-                                                            </div>
-                                                </div>
                                     </div>
                         </nav>
             </header>
+            <main class="container mx-auto">
+                        <div class="flex flex-col justify-center items-center gap-5 mt-10">
+                                    <p class="text-[16px] md:text-xl">Bringing Families Together ❤️</p>
+                                    <h1 class="text-2xl md:text-7xl font-bold text-center md:w-[800px]">Your Path to
+                                                Adoption Starts Here</h1>
+                                    <p class="text-[16px] md:text-xl text-center w-[320px] md:w-[800px]">
+                                                We are a team of animal lovers. We provide a perfect place where you can find pets that you want. 
+                                                Checkout some of our collections. Give them a perfect life.
+                                    </p>
+                                    <button class="btn bg_primary text-white">View More</button>
+                                    <img src="assets/pet.webp" alt="hero image">
+                        </div>
+            </main>
 
             <script src="script.js"></script>
 </body>

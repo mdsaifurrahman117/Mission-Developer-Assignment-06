@@ -5,6 +5,9 @@ MediaSourceHandle.exports = {
                         extends : {
                                     fontFamily : {
                                                 lato : ["Lato", "sans-serif"],
+                                    },
+                                    color : {
+                                                bgPrimary : ["#0E7A81"],
                                     }
                         }
             },
