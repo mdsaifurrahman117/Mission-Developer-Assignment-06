@@ -71,8 +71,6 @@ const get_data = async () => {
 
 // showing all the data by default on the ui
 const show_data = (pets) => {
-            // console.log(pets);
-
             // get the items container 
             const items_container = document.getElementById("items_container");
             items_container.innerHTML = "";
@@ -103,7 +101,7 @@ const show_data = (pets) => {
                                                             alt="pets image" 
                                                 />
                                     </figure>
-                                    <div class="card-body">
+                                    <div class="card-body pt-0">
                                                 <h2 class="card-title">
                                                             ${items.pet_name}
                                                 </h2>
@@ -114,10 +112,12 @@ const show_data = (pets) => {
                                                 <div class="card-actions justify-center gap-3 border-t border-gray-200 py-2 mt-2">
                                                             <button class="btn bg-base-100"><img src="assets/thumbs-up.svg"></button>
                                                             <button class="btn bg-base-100 text_primary font-semibold">Adopt</button>
-                                                            <button class="btn bg-base-100 text_primary font-semibold">Details</button>
+                                                            <button class="btn bg-base-100 text_primary font-semibold" 
+                                                                        onclick="get_description('${items.petId}')">
+                                                                        Details
+                                                            </button>
                                                 </div>
                                     </div>
-                                    
                         `;
                         items_container.appendChild(card_wrapper);
             });
@@ -130,8 +130,80 @@ const show_all_item = () => {
             get_data();
 };
 
+// fetching description data
+const get_description = async (id) => {
+            const response = await fetch(`https://openapi.programming-hero.com/api/peddy/pet/${id}`);
+            const data = await response.json();
+
+            // calling description
+            show_description(data);
+} 
+
+// showing description on modal
+const show_description = (desc) => {
+            const description_container = document.getElementById("description-container");
+            description_container.innerHTML = `
+                        <figure class="p-5">
+                                                <img
+                                                            src="${desc.petData.image}"
+                                                            alt="pets image" 
+                                                            class="w-full rounded"
+                                                />
+                                    </figure>
+                                    <div class="card-body t-0">
+                                                <h2 class="card-title text-2xl"> ${desc.petData.pet_name}</h2>
+                                                <div class="grid grid-cols-2 gap-1">
+                                                            <span class="text-gray-500 "><i class="ri-apps-2-line p-1"></i>
+                                                                        Breed : ${desc.petData.breed}
+                                                            </span>
+                                                            <span class="text-gray-500"><i class="ri-calendar-line p-1"></i>
+                                                                        Birth : ${desc.petData.date_of_birth}
+                                                            </span>
+                                                            <span class="flex text-gray-500"><img src="assets/gender.svg">
+                                                                        Gender : ${desc.petData.gender} 
+                                                            </span>
+                                                            <span class="flex text-gray-500"><img src="assets/dollar.svg"> : 
+                                                                        ${desc.petData.price}$
+                                                            </span>
+                                                            <span class="flex text-gray-500"><img src="assets/gender.svg">
+                                                                        Vaccinated Status : ${desc.petData.vaccinated_status}
+                                                            </span>
+                                                </div>
+                                                <div class="border-t border-gray-200 py-2 mt-2">
+                                                            <h3 class="text-xl font-semibold py-2">Details Information</h3>
+                                                            <p>${desc.petData.pet_details}</p>
+                                                </div>
+                                    </div>
+
+            `;
+            document.getElementById("open_modal").showModal();
+}
+
 // calling category function
 category_button();
 
 // calling data function 
 get_data();
+
+
+
+/*
+
+{
+    "status": true,
+    "message": "successfully fetched pet data using id 1",
+    "petData": {
+        "petId": 1,
+        "breed": "Golden Retriever",
+        "category": "Dog",
+        "date_of_birth": "2023-01-15",
+        "price": 1200,
+        "image": "https://i.ibb.co.com/p0w744T/pet-1.jpg",
+        "gender": "Male",
+        "pet_details": "This friendly male Golden Retriever is energetic and loyal, making him a perfect companion for families. Born on January 15, 2023, he enjoys playing outdoors and is especially great with children. Fully vaccinated, he's ready to join your family and bring endless joy. Priced at $1200, he offers love, loyalty, and a lively spirit for those seeking a playful yet gentle dog.",
+        "vaccinated_status": "Fully",
+        "pet_name": "Sunny"
+    }
+}
+
+*/

@@ -64,7 +64,7 @@
                                                 find pets that you want.
                                                 Checkout some of our collections. Give them a perfect life.
                                     </p>
-                                    <button class="btn bg_primary text-white" onclick="show_all_item()"> 
+                                    <button class="btn bg_primary text-white" onclick="show_all_item()">
                                                 <a href="#pets">View More</a>
                                     </button>
                                     <img src="assets/pet.webp" alt="hero image">
@@ -91,6 +91,16 @@
                         <div class="card card-border mx-auto md:mx-0 shadow bg-base-100 w-[280px] min-h-screen">
                                     <div class="card-body"></div>
                         </div>
+                        <dialog id="open_modal" class="modal">
+                                    <div class="modal-box p-0">
+                                                <form method="dialog">
+                                                            <button
+                                                                        class="btn btn-sm btn-circle bg_primary text-white shadow-0 absolute right-2 top-2">✕
+                                                            </button>
+                                                </form>
+                                    <div id="description-container"></div>
+                                    </div>
+                        </dialog>
             </section>
 
             <script src="script.js"></script>
