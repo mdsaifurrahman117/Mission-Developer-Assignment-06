@@ -1,0 +1,15 @@
+.font-lato {
+            font-family: "Lato", sans-serif;
+}
+
+.bg_primary {
+            background: #0E7A81;
+}
+.text_primary {
+            color: #0E7A81;
+}
+.active_button {
+            background: rgba(14, 121, 129, 0.10);
+            border-radius: 50px;
+            border: 1px solid #0E7A81;
+}
