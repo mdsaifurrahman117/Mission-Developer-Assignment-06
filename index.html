@@ -16,8 +16,12 @@
                         .font-lato {
                                     font-family: "Lato", sans-serif;
                         }
+
                         .bg_primary {
                                     background: #0E7A81;
+                        }
+                        .text_primary {
+                                    color: #0E7A81;
                         }
             </style>
             <title>Peddy | Pet Adoption</title>
@@ -27,7 +31,8 @@
             <header>
                         <nav class="navbar bg-base-100 shadow-sm">
                                     <div class="navbar-start gap-2">
-                                                <a class="flex flex-row gap-1 justify-center items-center text-3xl font-bold">
+                                                <a
+                                                            class="flex flex-row gap-1 justify-center items-center text-3xl font-bold">
                                                             <img src="assets/logo.webp" alt="logo" class="w-5 h-5">
                                                             Peddy
                                                 </a>
@@ -66,7 +71,8 @@
                                                 Your Path to Adoption Starts Here
                                     </h1>
                                     <p class="text-[16px] md:text-xl text-center w-[320px] md:w-[800px]">
-                                                We are a team of animal lovers. We provide a perfect place where you can find pets that you want. 
+                                                We are a team of animal lovers. We provide a perfect place where you can
+                                                find pets that you want.
                                                 Checkout some of our collections. Give them a perfect life.
                                     </p>
                                     <button class="btn bg_primary text-white">
@@ -78,12 +84,23 @@
             <section class="container mx-auto my-20" id="pet_collection">
                         <div class="flex flex-col justify-center items-center gap-5 mt-10">
                                     <h1 class="text-2xl md:text-5xl font-bold text-center md:w-[800px]">
-                                                Adopt  Your  Best Friend
+                                                Adopt Your Best Friend
                                     </h1>
                                     <p class="text-[16px] md:text-xl text-center w-[320px] md:w-[800px]">
                                                 Adopt a pet as you like. Check some pets categories down below.
                                     </p>
-                                    <div id="button_collection" class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-10 mt-10"></div>
+                                    <div id="button_collection"
+                                                class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-14 mt-10"></div>
+                        </div>
+                        <div class="flex flex-rows justify-between items-center mt-10 mx-5 md:w-9/12 md:mx-auto">
+                                    <h2 class="text-xl md:text-2xl font-semibold">Best Deal For you</h2>
+                                    <button class="btn bg_primary text-white px-8">Sort by Price</button>
+                        </div>
+            </section>
+            <section class="w-11/12 mx-auto my-20 flex flex-col md:flex-row justify-center gap-5">
+                        <div id="items_container" class="grid grid-cols-1 md:grid-cols-3 items-center gap-5"></div>
+                        <div class="card card-border shadow bg-base-100 w-[280px] min-h-screen">
+                                    <div class="card-body"></div>
                         </div>
             </section>
 
