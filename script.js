@@ -1,32 +1,50 @@
-// fetching all  category button 
- const category_button  = async () => {
-            try {
-                        const response = await fetch ("https://openapi.programming-hero.com/api/peddy/categories");
-                        const data = await response.json();
-                        data = show_category(data.categories);
-            } catch (error) {
-                        error => console.log(error)
+document.addEventListener("DOMContentLoaded", () => {
+            // adding loader
+            const loader = document.getElementById("loader");
+            const show_loader = () => {
+                        loader.classList.add("block");
+                        loader.classList.remove("hidden");
             }
-} ;
+            const hide_loader = () => {
+                        loader.classList.add("hidden");
+                        loader.classList.remove("block");
+            }
+
+            // fetching all  category button 
+            const category_button = async () => {
+                        try {
+                                    show_loader();
+                                    const response = await fetch("https://openapi.programming-hero.com/api/peddy/categories");
+                                    const data = await response.json();
+                                    data = show_category(data.categories);
+                                    hide_loader();
+                        } catch (error) {
+                                    error => console.log(error)
+                                    hide_loader();
+                        }
+            };
 
 // showing all category button on the ui 
 const show_category = (categories) => {
             // console.log(categories);
             const button_collection = document.getElementById("button_collection");
-            
+
             // looping all category button
             categories.forEach(items => {
-                        const button_container =  document.createElement("div");
+                        const button_container = document.createElement("div");
 
-                        button_container.innerHTML = `
-                                    <button 
-                                                class="btn px-14 py-7 text-[15px] w-[150px] md:w-[200px]"
-                                                            id="category_button_${items.category}"
-                                                            onclick="category_data('${items.category}')" >
-                                                <img src="${items.category_icon}" class="w-8 h-8"> 
-                                                ${items.category}
-                                    </button>
+                        // create buttons
+                        const button = document.createElement("button");
+                        button.classList.add("btn", "px-14", "py-7", "text-[15px]", "w-[150px]", "md:w-[200px]");
+                        button.setAttribute("id", `category_button_${items.category}`);
+                        button.setAttribute("data-category", items.category);
+                        button.addEventListener("click", () => {
+                                    category_data(items.category)
+                        });
+                        button.innerHTML = `
+                                    <img src="${items.category_icon}" class="w-8 h-8"> 
                         `;
+                        button_container.appendChild(button);
                         button_collection.appendChild(button_container);
             });
 };
@@ -34,6 +52,7 @@ const show_category = (categories) => {
 // fetching category data based on category button click
 const category_data = async (category) => {
             try {
+                        show_loader();
                         const response = await fetch(`https://openapi.programming-hero.com/api/peddy/category/${category}`);
                         const data = await response.json();
 
@@ -44,8 +63,10 @@ const category_data = async (category) => {
 
                         // calling all data function
                         show_data(data.data);
+                        hide_loader();
             } catch (error) {
                         console.log(error);
+                        hide_loader();
             }
 }
 
@@ -63,7 +84,7 @@ const get_data = async () => {
                         const response = await fetch("https://openapi.programming-hero.com/api/peddy/pets");
                         const data = await response.json();
                         show_data(data.pets);
-                        
+
             } catch (error) {
                         console.log(error);
             }
@@ -76,7 +97,7 @@ const show_data = (pets) => {
             items_container.innerHTML = "";
 
             // showing not found page
-            if (pets.length == 0) {
+            if (pets.length === 0) {
                         // console.log("not found");
                         items_container.classList.remove("grid");
                         items_container.innerHTML = `
@@ -89,11 +110,11 @@ const show_data = (pets) => {
             } else {
                         items_container.classList.add("grid")
             }
-            
+
             // looping all the data
             pets.forEach(items => {
                         const card_wrapper = document.createElement("div");
-                        card_wrapper.classList.add("card", "bg-base-100", "w-[280px]" , "mx-auto","shadow-sm");
+                        card_wrapper.classList.add("card", "bg-base-100", "w-[280px]", "mx-auto", "shadow-sm");
                         card_wrapper.innerHTML = `
                                     <figure class="p-5">
                                                 <img
@@ -124,20 +145,25 @@ const show_data = (pets) => {
 };
 
 // showing all data by clicking view more button
-const show_all_item = () => {
+window.show_all_item = () => {
             remove_active()
             items_container.innerHTML = "";
             get_data();
 };
 
 // fetching description data
-const get_description = async (id) => {
-            const response = await fetch(`https://openapi.programming-hero.com/api/peddy/pet/${id}`);
-            const data = await response.json();
-
-            // calling description
-            show_description(data);
-} 
+window.get_description = async (id) => {
+            try {
+                        show_loader();
+                        const response = await fetch(`https://openapi.programming-hero.com/api/peddy/pet/${id}`);
+                        const data = await response.json();
+                        show_description(data);
+                        hide_loader()
+            } catch (error) {
+                        console.log(error);
+                        hide_loader();
+            }
+}
 
 // showing description on modal
 const show_description = (desc) => {
@@ -179,31 +205,9 @@ const show_description = (desc) => {
             document.getElementById("open_modal").showModal();
 }
 
-// calling category function
-category_button();
+category_button()
 
 // calling data function 
 get_data();
 
-
-
-/*
-
-{
-    "status": true,
-    "message": "successfully fetched pet data using id 1",
-    "petData": {
-        "petId": 1,
-        "breed": "Golden Retriever",
-        "category": "Dog",
-        "date_of_birth": "2023-01-15",
-        "price": 1200,
-        "image": "https://i.ibb.co.com/p0w744T/pet-1.jpg",
-        "gender": "Male",
-        "pet_details": "This friendly male Golden Retriever is energetic and loyal, making him a perfect companion for families. Born on January 15, 2023, he enjoys playing outdoors and is especially great with children. Fully vaccinated, he's ready to join your family and bring endless joy. Priced at $1200, he offers love, loyalty, and a lively spirit for those seeking a playful yet gentle dog.",
-        "vaccinated_status": "Fully",
-        "pet_name": "Sunny"
-    }
-}
-
-*/
+})
