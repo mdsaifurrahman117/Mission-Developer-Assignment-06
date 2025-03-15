@@ -159,7 +159,11 @@ document.addEventListener("DOMContentLoaded", () => {
                                                                                     onclick="get_liked_pet('${items.petId}')">
                                                                                     <img src="assets/thumbs-up.svg">
                                                                         </button>
-                                                                        <button class="btn bg-base-100 text_primary font-semibold">Adopt</button>
+                                                                        <button 
+                                                                                    class="btn bg-base-100 text_primary font-semibold"
+                                                                                    onclick="show_adoption()">
+                                                                                    Adopt
+                                                                        </button>
                                                                         <button class="btn bg-base-100 text_primary font-semibold" 
                                                                                     onclick="get_description('${items.petId || "Unavailable"}')">
                                                                                     Details
@@ -230,6 +234,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         `;
                         document.getElementById("open_modal").showModal();
             }
+
+            // fetching liked data
             window.get_liked_pet = async (id) => {
                         try {
                                     show_loader();
@@ -242,6 +248,8 @@ document.addEventListener("DOMContentLoaded", () => {
                                     hide_loader();
                         };
             };
+            
+            // showing liked data
             const show_liked_pets = (image) => {
                         console.log(image);
                         
@@ -256,6 +264,16 @@ document.addEventListener("DOMContentLoaded", () => {
                                     >
                         `;
                         liked_pet.appendChild(liked_pets_container)
+            }
+
+            // showing adoption data
+            window.show_adoption = () => {
+                        const adopt_container = document.getElementById("adopt-container");
+                        adopt_container.innerHTML = `
+                                    <h2 class="text-5xl">Congrats</h2>
+                                    <p class="text-xl">Your adoption is successful</p>
+                        `;
+                        document.getElementById("open_modal_adopt").showModal();
             }
 
             category_button()
