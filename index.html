@@ -83,14 +83,17 @@
                         </div>
                         <div class="flex flex-rows justify-between items-center mt-10 mx-5 md:w-9/12 md:mx-auto">
                                     <h2 class="text-[18px] md:text-2xl font-semibold">Best Deal For you</h2>
-                                    <span class="loading loading-dots loading-xl left-[45%] top-[50%] z-[99999]" id="loader"></span>
-                                    <button class="btn bg_primary text-white px-5" id="sort_price">Sort by Price</button>
+                                    <span class="loading loading-dots loading-xl left-[45%] top-[50%] z-[99999]"
+                                                id="loader"></span>
+                                    <button class="btn bg_primary text-white px-5" id="sort_price">Sort by
+                                                Price</button>
                         </div>
             </section>
             <section class="w-11/12 mx-auto my-10 flex flex-col md:flex-row justify-center gap-5" id="pets">
                         <div id="items_container" class="grid grid-cols-1 md:grid-cols-3 items-center gap-5"></div>
                         <div class="card card-border items-center mx-auto md:mx-0 shadow bg-base-100 w-[280px]">
-                                    <div class="mt-5 grid grid-cols-2 gap-5 justify-center items-center" id="liked_pets"></div>
+                                    <div class="mt-5 grid grid-cols-2 gap-5 justify-center items-center"
+                                                id="liked_pets"></div>
                         </div>
                         <dialog id="open_modal" class="modal">
                                     <div class="modal-box p-0">
@@ -99,7 +102,7 @@
                                                                         class="btn btn-sm btn-circle bg_primary text-white shadow-0 absolute right-2 top-2">✕
                                                             </button>
                                                 </form>
-                                    <div id="description-container"></div>
+                                                <div id="description-container"></div>
                                     </div>
                         </dialog>
                         <dialog id="open_modal_adopt" class="modal">
@@ -109,10 +112,43 @@
                                                                         class="btn btn-sm btn-circle bg_primary text-white shadow-0 absolute right-2 top-2">✕
                                                             </button>
                                                 </form>
-                                    <div id="adopt-container" class="py-10 text-center flex flex-col gap-3"></div>
+                                                <div id="adopt-container" class="py-10 text-center flex flex-col gap-3">
+                                                </div>
                                     </div>
                         </dialog>
             </section>
+            <footer class="footer sm:footer-horizontal bg-black text-white text-base-content p-10">
+                        <nav>
+                                    <h4
+                                                class="flex flex-row gap-1 justify-center items-center text-3xl font-bold">
+                                                <img src="assets/logo.webp" alt="logo" class="w-5 h-5">
+                                                Peddy
+                                    </h4>
+                                    <p class="text-[15px]">Location: av. Washington 165, NY CA 54003</p>
+                                    <p class="text-[15px]">Phone: +31 85 964 47 25</p>
+                                    <p class="text-[15px]">Email: info@yourdomain.com</p>
+                                    <p class="text-[15px]">Openings hours: 9.00 AM - 5.00 PM</p>
+                        </nav>
+                        <nav>
+                                    <h6 class="text-white text-xl">Useful Links</h6>
+                                    <a class="link link-hover text-[15px]">Home</a>
+                                    <a class="link link-hover text-[15px]">About Us</a>
+                                    <a class="link link-hover text-[15px]">Animals</a>
+                                    <a class="link link-hover text-[15px]">Foundation</a>
+                                    <a class="link link-hover text-[15px]">Contact</a>
+                        </nav>
+                        <form>
+                                    <h6 class="text-white text-xl">Drop a Message</h6>
+                                    <fieldset class="w-80">
+                                                <label>Enter your email address</label>
+                                                <div class="flex flex-col gap-3">
+                                                            <input type="text" placeholder="username@site.com"
+                                                                        class="input input-bordered text-black" />
+                                                            <button class="btn border-0 text-white bg_primary">Subscribe</button>
+                                                </div>
+                                    </fieldset>
+                        </form>
+            </footer>
             <script src="script.js"></script>
 </body>
 
