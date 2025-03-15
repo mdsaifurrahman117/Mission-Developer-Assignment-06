@@ -96,8 +96,8 @@ const show_data = (pets) => {
             const items_container = document.getElementById("items_container");
             items_container.innerHTML = "";
 
-            // showing not found page
-            if (pets.length === 0) {
+            // check if pets data is empty, null or undefined
+            if (!pets || pets.length === 0) {
                         // console.log("not found");
                         items_container.classList.remove("grid");
                         items_container.innerHTML = `
@@ -113,6 +113,8 @@ const show_data = (pets) => {
 
             // looping all the data
             pets.forEach(items => {
+                        // console.log(items);
+                        
                         const card_wrapper = document.createElement("div");
                         card_wrapper.classList.add("card", "bg-base-100", "w-[280px]", "mx-auto", "shadow-sm");
                         card_wrapper.innerHTML = `
@@ -124,17 +126,25 @@ const show_data = (pets) => {
                                     </figure>
                                     <div class="card-body pt-0">
                                                 <h2 class="card-title">
-                                                            ${items.pet_name}
+                                                            ${items.pet_name || "Unavailable"}
                                                 </h2>
-                                                <span class="text-gray-500 "><i class="ri-apps-2-line p-1"></i>Breed : ${items.breed} </span>
-                                                <span class="text-gray-500"><i class="ri-calendar-line p-1"></i>Birth : ${items.date_of_birth} </span>
-                                                <span class="flex text-gray-500"><img src="assets/gender.svg">Gender : ${items.gender} </span>
-                                                <span class="flex text-gray-500"><img src="assets/dollar.svg"> : ${items.price}$</span>
+                                                <span class="text-gray-500 "><i class="ri-apps-2-line p-1"></i>
+                                                            Breed : ${items.breed || "Unavailable"} 
+                                                </span>
+                                                <span class="text-gray-500"><i class="ri-calendar-line p-1"></i>
+                                                            Birth : ${items.date_of_birth || "Unavailable"} 
+                                                </span>
+                                                <span class="flex text-gray-500"><img src="assets/gender.svg">
+                                                            Gender : ${items.gender || "Unavailable"} 
+                                                </span>
+                                                <span class="flex text-gray-500"><img src="assets/dollar.svg"> : 
+                                                            ${items.price || "Unavailable"}$
+                                                </span>
                                                 <div class="card-actions justify-center gap-3 border-t border-gray-200 py-2 mt-2">
                                                             <button class="btn bg-base-100"><img src="assets/thumbs-up.svg"></button>
                                                             <button class="btn bg-base-100 text_primary font-semibold">Adopt</button>
                                                             <button class="btn bg-base-100 text_primary font-semibold" 
-                                                                        onclick="get_description('${items.petId}')">
+                                                                        onclick="get_description('${items.petId || "Unavailable"}')">
                                                                         Details
                                                             </button>
                                                 </div>
@@ -177,27 +187,27 @@ const show_description = (desc) => {
                                                 />
                                     </figure>
                                     <div class="card-body t-0">
-                                                <h2 class="card-title text-2xl"> ${desc.petData.pet_name}</h2>
+                                                <h2 class="card-title text-2xl"> ${desc.petData.pet_name || "Unavailable"}</h2>
                                                 <div class="grid grid-cols-2 gap-1">
                                                             <span class="text-gray-500 "><i class="ri-apps-2-line p-1"></i>
-                                                                        Breed : ${desc.petData.breed}
+                                                                        Breed : ${desc.petData.breed || "Unavailable"}
                                                             </span>
                                                             <span class="text-gray-500"><i class="ri-calendar-line p-1"></i>
-                                                                        Birth : ${desc.petData.date_of_birth}
+                                                                        Birth : ${desc.petData.date_of_birth || "Unavailable"}
                                                             </span>
                                                             <span class="flex text-gray-500"><img src="assets/gender.svg">
-                                                                        Gender : ${desc.petData.gender} 
+                                                                        Gender : ${desc.petData.gender || "Unavailable"} 
                                                             </span>
                                                             <span class="flex text-gray-500"><img src="assets/dollar.svg"> : 
-                                                                        ${desc.petData.price}$
+                                                                        ${desc.petData.price || "Unavailable"}$
                                                             </span>
                                                             <span class="flex text-gray-500"><img src="assets/gender.svg">
-                                                                        Vaccinated Status : ${desc.petData.vaccinated_status}
+                                                                        Vaccinated Status : ${desc.petData.vaccinated_status || "Unavailable"}
                                                             </span>
                                                 </div>
                                                 <div class="border-t border-gray-200 py-2 mt-2">
                                                             <h3 class="text-xl font-semibold py-2">Details Information</h3>
-                                                            <p>${desc.petData.pet_details}</p>
+                                                            <p>${desc.petData.pet_details || "Unavailable"}</p>
                                                 </div>
                                     </div>
 
