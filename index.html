@@ -20,7 +20,7 @@
             <header>
                         <nav class="navbar bg-base-100 shadow-sm">
                                     <div class="navbar-start gap-2">
-                                                <a
+                                                <a href="index.html"
                                                             class="flex flex-row gap-1 justify-center items-center text-3xl font-bold">
                                                             <img src="assets/logo.webp" alt="logo" class="w-5 h-5">
                                                             Peddy
@@ -45,8 +45,8 @@
                                                             </div>
                                                             <ul tabindex="0"
                                                                         class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow font-bold text-[16px]">
-                                                                        <li><a>Home</a></li>
-                                                                        <li><a>Shop</a></li>
+                                                                        <li><a href="index.html">Home</a></li>
+                                                                        <li><a href="#pets">Shop</a></li>
                                                                         <li><a>Contact</a></li>
                                                             </ul>
                                                 </div>
@@ -65,7 +65,7 @@
                                                 Checkout some of our collections. Give them a perfect life.
                                     </p>
                                     <button class="btn bg_primary text-white" onclick="show_all_item()">
-                                                <a href="#pets">View More</a>
+                                                View More
                                     </button>
                                     <img src="assets/pet.webp" alt="hero image">
                         </div>
@@ -82,9 +82,9 @@
                                                 class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-14 mt-10"></div>
                         </div>
                         <div class="flex flex-rows justify-between items-center mt-10 mx-5 md:w-9/12 md:mx-auto">
-                                    <h2 class="text-xl md:text-2xl font-normal md:font-semibold">Best Deal For you</h2>
+                                    <h2 class="text-[18px] md:text-2xl font-semibold">Best Deal For you</h2>
                                     <span class="loading loading-dots loading-xl left-[45%] top-[50%] z-[99999]" id="loader"></span>
-                                    <button class="btn bg_primary text-white px-8">Sort by Price</button>
+                                    <button class="btn bg_primary text-white px-5" id="sort_price">Sort by Price</button>
                         </div>
             </section>
             <section class="w-11/12 mx-auto my-10 flex flex-col md:flex-row justify-center gap-5" id="pets">

@@ -90,6 +90,7 @@ const get_data = async () => {
             }
 }
 
+
 // showing all the data by default on the ui
 const show_data = (pets) => {
             // get the items container 
@@ -109,8 +110,22 @@ const show_data = (pets) => {
                         return;
             } else {
                         items_container.classList.add("grid")
-            }
+            };
 
+            // declare ascending 
+            let is_ascending = true;
+            
+            // sort data by price descending
+            const sort_price = () => {
+                        pets.sort((a, b) => is_ascending ? (a.price || 0) - (b.price) : (b.price || 0) - (a.price));
+                        document.getElementById("sort_price").textContent = !is_ascending ? "High to Low" : "Low to High" ;
+                        show_data(pets);
+            };
+            document.getElementById("sort_price").addEventListener("click", () => {
+                        is_ascending = !is_ascending;
+                        sort_price();
+            });
+            
             // looping all the data
             pets.forEach(items => {
                         // console.log(items);
@@ -138,7 +153,7 @@ const show_data = (pets) => {
                                                             Gender : ${items.gender || "Unavailable"} 
                                                 </span>
                                                 <span class="flex text-gray-500"><img src="assets/dollar.svg"> : 
-                                                            ${items.price || "Unavailable"}$
+                                                            ${items.price || "Unavailable"}
                                                 </span>
                                                 <div class="card-actions justify-center gap-3 border-t border-gray-200 py-2 mt-2">
                                                             <button class="btn bg-base-100"><img src="assets/thumbs-up.svg"></button>
